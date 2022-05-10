@@ -21,10 +21,10 @@ public class BottomFragmentsAdapter extends FragmentStateAdapter {
         switch (position)
         {
             case 0:
-                return new pizzaOrderFragment();
+                return new pizzaCartFragment();
 
             case 1:
-                return new pizzaCartFragment();
+                return new pizzaOrderFragment();
         }
         return new pizzaOrderFragment();
     }

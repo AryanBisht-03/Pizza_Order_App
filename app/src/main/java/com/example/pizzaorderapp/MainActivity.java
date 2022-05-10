@@ -15,17 +15,24 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.pizzaorderapp.RecyclerViews.orderListRecyclerView;
+import com.example.pizzaorderapp.RecyclerViews.pizzaListRecyclerView;
 import com.example.pizzaorderapp.Utils.BottomFragmentsAdapter;
+import com.example.pizzaorderapp.Models.PizzaModel;
 import com.example.pizzaorderapp.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
-import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     RequestQueue queue;
+    ArrayList<PizzaModel> pizzas,orders;
+    public orderListRecyclerView orderadatper;
+    public pizzaListRecyclerView pizzaadapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         BottomFragmentsAdapter navigationAdapter = new BottomFragmentsAdapter(this);
 
         binding.viewPager.setAdapter(navigationAdapter);
+        pizzas = new ArrayList<>();
+        orders = new ArrayList<>();
+        orderadatper = new orderListRecyclerView(this,orders);
+        pizzaadapter = new pizzaListRecyclerView(this,pizzas);
 
         binding.bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -76,15 +87,9 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try {
-                            Log.d("Aryan","response: - " + response.toString());
-                            String name = response.getString("name");
-                            Log.d("Aryan","Name:- "+name);
-                        } catch (JSONException e) {
-                            Log.d("Aryan","Some exception occurs");
-                            e.printStackTrace();
-                        }
-
+                            PizzaModel pizza = new PizzaModel(response);
+                            pizzas.add(pizza);
+                            pizzaadapter.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
             @Override

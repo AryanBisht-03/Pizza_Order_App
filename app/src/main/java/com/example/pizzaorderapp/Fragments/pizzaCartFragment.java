@@ -23,6 +23,7 @@ public class pizzaCartFragment extends Fragment {
         binding = FragmentPizzaCartBinding.inflate(getLayoutInflater(), container, false);
         activity = (MainActivity) getActivity();
 
+        binding.recyclerviewpizza.setAdapter(activity.pizzaadapter);
         return binding.getRoot();
     }
 }
