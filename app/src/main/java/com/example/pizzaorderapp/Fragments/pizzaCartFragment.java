@@ -1,4 +1,4 @@
-package com.example.pizzaorderapp;
+package com.example.pizzaorderapp.Fragments;
 
 import android.os.Bundle;
 
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.pizzaorderapp.MainActivity;
 import com.example.pizzaorderapp.databinding.FragmentPizzaCartBinding;
 
 

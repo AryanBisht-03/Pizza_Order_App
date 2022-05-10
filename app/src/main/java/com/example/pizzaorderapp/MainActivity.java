@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,8 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.pizzaorderapp.Utils.BottomFragmentsAdapter;
 import com.example.pizzaorderapp.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import org.json.JSONException;
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
         String userUrl = "https://625bbd9d50128c570206e502.mockapi.io/api/v1/pizza/1";
         queue = Volley.newRequestQueue(this);
-
+        HttpsTrustManager.allowAllSSL();
         JsonObjectRequest userReg = new JsonObjectRequest(Request.Method.GET, userUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -81,9 +80,6 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("Aryan","response: - " + response.toString());
                             String name = response.getString("name");
                             Log.d("Aryan","Name:- "+name);
-//                            user = new MainUser(response.getInt("station_code"),response.getString("name"),
-//                                    response.getString("url"));
-//                            Log.d("Aryan",user.name+" "+user.station_code);
                         } catch (JSONException e) {
                             Log.d("Aryan","Some exception occurs");
                             e.printStackTrace();
