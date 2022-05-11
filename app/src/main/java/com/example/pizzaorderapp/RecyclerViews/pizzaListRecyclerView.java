@@ -5,10 +5,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pizzaorderapp.Interface.addtoCardInterface;
 import com.example.pizzaorderapp.Models.CrustModel;
 import com.example.pizzaorderapp.Models.SizeModel;
 import com.example.pizzaorderapp.R;
@@ -17,14 +19,15 @@ import com.example.pizzaorderapp.databinding.PizzalistRecyclerBinding;
 
 import java.util.ArrayList;
 
-public class pizzaListRecyclerView extends RecyclerView.Adapter<pizzaListRecyclerView.pizzaListViewHolder> {
+public class pizzaListRecyclerView extends RecyclerView.Adapter<pizzaListRecyclerView.pizzaListViewHolder>  {
 
     Context context;
     ArrayList<PizzaModel> items;
-
-    public pizzaListRecyclerView(Context context, ArrayList<PizzaModel> items) {
+    addtoCardInterface reportlistener;
+    public pizzaListRecyclerView(Context context, ArrayList<PizzaModel> items, addtoCardInterface reportlistener) {
         this.context = context;
         this.items = items;
+        this.reportlistener = reportlistener;
     }
 
     @NonNull
@@ -45,18 +48,12 @@ public class pizzaListRecyclerView extends RecyclerView.Adapter<pizzaListRecycle
             holder.binding.vegImage.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_cricle_red));
 
         holder.binding.crustName.setText(model.getCrusts().get(0).getCrustName());
-//        Log.d("Aryan","All data is: - "+model.getName()+" "+model.getDescription()+" "+model.getVeg()+" "+model.getId());
-//        Log.d("Aryan","Data :- "+model.getDefaultCrust());
-//        for(int i=0;i<model.getCrusts().size();i++)
-//        {
-//            CrustModel value = model.getCrusts().get(i);
-//            Log.d("Aryan",value.getCrustName()+" "+value.getCrustID()+" "+value.getDefaultSize());
-//            for(int j=0;j<value.getSizes().size();j++)
-//            {
-//                SizeModel tmp = value.getSizes().get(j);
-//                Log.d("Aryan",tmp.getSizeID()+" "+tmp.getPrice()+" "+tmp.getSizeName());
-//            }
-//        }
+        holder.binding.addCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reportlistener.addtoCartItem(model);
+            }
+        });
     }
 
     @Override
@@ -69,7 +66,6 @@ public class pizzaListRecyclerView extends RecyclerView.Adapter<pizzaListRecycle
         PizzalistRecyclerBinding binding;
         public pizzaListViewHolder(@NonNull View itemView) {
             super(itemView);
-
             binding = PizzalistRecyclerBinding.bind(itemView);
         }
     }

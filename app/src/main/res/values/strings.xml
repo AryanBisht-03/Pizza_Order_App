@@ -6,4 +6,8 @@
     <string name="size">Size :-</string>
     <string name="crustName">Crust Name :-</string>
     <string name="addCart">Add to Cart</string>
+    <string name="rupee">Rs.</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

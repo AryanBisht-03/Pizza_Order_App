@@ -39,4 +39,107 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D8D8D8">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/crustName"
+                app:layout_constraintBottom_toBottomOf="@+id/crustSpinner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/crustSpinner" />
+
+            <Spinner
+                android:id="@+id/crustSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="spinners"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/size"
+                app:layout_constraintBottom_toBottomOf="@+id/sizespinner"
+                app:layout_constraintEnd_toEndOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="@+id/sizespinner" />
+
+            <Spinner
+                android:id="@+id/sizespinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:contentDescription="spinners"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="@+id/crustSpinner"
+                app:layout_constraintStart_toStartOf="@+id/crustSpinner"
+                app:layout_constraintTop_toBottomOf="@+id/crustSpinner" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/rupee"
+                android:textColor="#53E416"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/sizespinner" />
+
+            <TextView
+                android:id="@+id/rupeeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="0"
+                android:textColor="#53E416"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                app:layout_constraintStart_toEndOf="@+id/textView7"
+                app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/cancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rupeeText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/confirmButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:text="@string/confirm"
+                app:layout_constraintBottom_toBottomOf="@+id/cancelButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cancelButton" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
