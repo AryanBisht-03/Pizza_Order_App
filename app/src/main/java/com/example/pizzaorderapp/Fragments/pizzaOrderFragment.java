@@ -39,9 +39,8 @@ public class pizzaOrderFragment extends Fragment {
         super.onResume();
         Integer cost = 0;
         for (Map.Entry<String, Pair> entry : activity.orderList.entrySet()) {
-            String k = entry.getKey();
             Pair value = entry.getValue();
-            cost =  (Integer) cost + (Integer) value.first* (Integer) value.second;
+            cost =  cost + (Integer) value.first* (Integer) value.second;
         }
         binding.moneyText.setText(cost.toString());
     }

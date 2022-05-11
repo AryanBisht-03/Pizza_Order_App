@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements addtoCardInterfac
     public ArrayList<OrderedPizza> orders;
     public orderListRecyclerView orderadatper;
     public pizzaListRecyclerView pizzaadapter;
+    BottomFragmentsAdapter navigationAdapter;
     public HashMap<String, Pair> orderList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements addtoCardInterfac
         setContentView(binding.getRoot());
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        BottomFragmentsAdapter navigationAdapter = new BottomFragmentsAdapter(this);
+        navigationAdapter = new BottomFragmentsAdapter(this);
 
         orderList = new HashMap<>();
         binding.viewPager.setAdapter(navigationAdapter);
@@ -171,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements addtoCardInterfac
                                 orderadatper.notifyDataSetChanged();
                                 binding.bottomNavigationView.setVisibility(View.VISIBLE);
                                 binding.cardView.setVisibility(View.GONE);
+                                Toast.makeText(MainActivity.this, "Item is added to Cart", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -217,5 +220,6 @@ public class MainActivity extends AppCompatActivity implements addtoCardInterfac
         model.setCount(model.getCount()+val);
         orderadatper.notifyDataSetChanged();
         orderList.put(key,p1);
+        navigationAdapter.getOrderFragment().onResume();
     }
 }

@@ -11,6 +11,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/description"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/pizzaName"
                 app:layout_constraintTop_toBottomOf="@+id/pizzaName" />
 
@@ -66,6 +70,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/crustName"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/despcription"
                 app:layout_constraintTop_toBottomOf="@+id/despcription" />

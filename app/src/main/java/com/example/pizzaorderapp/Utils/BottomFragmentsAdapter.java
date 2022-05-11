@@ -10,9 +10,17 @@ import com.example.pizzaorderapp.Fragments.pizzaOrderFragment;
 
 public class BottomFragmentsAdapter extends FragmentStateAdapter {
 
+    pizzaCartFragment cartFragment;
+    pizzaOrderFragment orderFragment;
+
+    public pizzaOrderFragment getOrderFragment() {
+        return orderFragment;
+    }
 
     public BottomFragmentsAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
+        cartFragment = new pizzaCartFragment();
+        orderFragment = new pizzaOrderFragment();
     }
 
     @NonNull
@@ -21,12 +29,12 @@ public class BottomFragmentsAdapter extends FragmentStateAdapter {
         switch (position)
         {
             case 0:
-                return new pizzaCartFragment();
+                return cartFragment;
 
             case 1:
-                return new pizzaOrderFragment();
+                return orderFragment;
         }
-        return new pizzaOrderFragment();
+        return cartFragment;
     }
 
     @Override
